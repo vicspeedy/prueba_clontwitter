@@ -1,10 +1,24 @@
+<!--
 <p style="color: green"><%= notice %></p>
+-->
 
-<%= render @tweet %>
 
-<div>
-  <%= link_to "Edit this tweet", edit_tweet_path(@tweet) %> |
-  <%= link_to "Back to tweets", tweets_path %>
+<!-- Jumbotron -->
+<div class="p-4 shadow-4 rounded-3" style="background-color: hsl(0, 0%, 94%);">
+  <h2>Show Tweet</h2>
+  <p>
+    <%= render @tweet %>
+  </p>
 
-  <%= button_to "Destroy this tweet", @tweet, method: :delete %>
+  <hr class="my-4" />
+
+  <div>
+    <%= link_to "Edit", edit_tweet_path(@tweet), class:"btn btn-secondary" %> 
+    <%= link_to "Back", tweets_path, class:"btn btn-secondary" %>
+  </div>
+  <br>
+  <div>
+    <%= button_to "Destroy this tweet", @tweet, method: :delete, data: {turbo_confirm: 'Are you sure?'}, class:"btn btn-danger" %>
+  </div>
 </div>
+<!-- Jumbotron -->

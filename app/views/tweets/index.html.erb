@@ -1,24 +1,48 @@
+<!--
 <p style="color: green"><%= notice %></p>
+-->
 
 <h2>Tweets</h2>
 <br><br>
-
+<!--
 <%= form_with url: tweets_path, method: :get do |form|%>
   <%= form.text_field :query_text, placeholder: t('Query text'), value: params[:query_text]%>
 <%end%>
-<br>
+-->
 
-<div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
-  <% end %>
-</div>
+
+      <div id="tweets">
+        
+        <% @tweets.each do |tweet| %>
+    
+            <div class="card w-75">
+              <h5 class="card-header">
+              <img
+                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                />
+              <strong><%= link_to tweet.username, tweet %></strong></h5>
+              <div class="card-body">
+                <h5 class="card-title text-muted ">@<%= tweet.username %></h5>
+                <p class="card-text"><%= tweet.description %></p>
+ 
+                <%= link_to "Show", tweet, class:"btn btn-outline-info btn-sm" %>
+              </div>
+            </div>
+            <br>
+
+        <% end %>
+      </div>
+ 
+
+<!--
 <%=raw pagy_nav(@pagy)%>
+-->
+<%== pagy_bootstrap_nav(@pagy) %>
 
 <br>
 <hr>
-<%= link_to "New tweet", new_tweet_path %>
-<br><br>
+<%= link_to "New tweet", new_tweet_path, class:"btn btn-secondary" %>
+<br><br><br><br>
